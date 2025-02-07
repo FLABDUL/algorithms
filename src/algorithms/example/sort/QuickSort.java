@@ -49,8 +49,9 @@ public class QuickSort {
             System.out.println("Partitioned at index " + pi + ": " + Arrays.toString(array));
 
             // Recursively sort elements before and after partition
-            quickSort(array, low, pi - 1);
-            quickSort(array, pi + 1, high);
+            quickSort(array, low, pi - 1);//smaller than pivot
+            quickSort(array, pi + 1, high);//higher than pivot
+            //else include pivot AGAIN
         }
     }
 
@@ -73,7 +74,7 @@ public class QuickSort {
         // Traverse through all elements and compare with pivot
         for (int j = low; j < high; j++) {
             if (array[j] <= pivot) {
-                i++;
+                i++;//ensures smaller placed before pivot
 
                 // Swap elements that are smaller than the pivot
                 int temp = array[i];
@@ -83,6 +84,7 @@ public class QuickSort {
         }
 
         // Swap the pivot element with the element at i + 1
+        //for final swap, all elements left pivot smaller
         int temp = array[i + 1];
         array[i + 1] = array[high];
         array[high] = temp;
@@ -90,6 +92,6 @@ public class QuickSort {
         // Log the pivot placement
         System.out.println("Pivot " + pivot + " placed at index " + (i + 1));
 
-        return i + 1;
+        return i + 1;//final index pivot
     }
 }

@@ -1,4 +1,4 @@
-package algorithms.example.graphsearch;
+package algorithms.example.graph_search;
 
 import java.util.*;
 

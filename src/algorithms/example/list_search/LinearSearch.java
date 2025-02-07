@@ -1,4 +1,4 @@
-package algorithms.example.listsearch;
+package algorithms.example.list_search;
 
 import java.util.Arrays;
 

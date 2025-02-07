@@ -1,4 +1,4 @@
-package algorithms.example.listsearch;
+package algorithms.example.list_search;
 
 import java.util.Arrays;
 
@@ -12,7 +12,7 @@ public class BinarySearch {
         int target = 9;
 
         // Perform binary search
-        int index = binarySearch(arr, target);
+        int index = binarySearchIterative(arr, target);
 
         // Output the result
         if (index != -1) {
@@ -30,7 +30,7 @@ public class BinarySearch {
      * @param target the value to search for
      * @return the index of the target if found, otherwise -1
      */
-    public static int binarySearch(int[] arr, int target) {
+    public static int binarySearchIterative(int[] arr, int target) {
         // Log the input array and target
         System.out.println("Searching for target " + target + " in array: " + Arrays.toString(arr));
 
@@ -89,4 +89,44 @@ public class BinarySearch {
      * - When dealing with large sorted datasets.
      * - When you need fast search operations on sorted data.
      */
+
+    /**
+     * Recursive Binary Search Algorithm.
+     * Searches for a target value in a sorted array by dividing the search range in half.
+     *
+     * @param arr    the sorted array to search
+     * @param target the value to find
+     * @param left   the left bound of the search range
+     * @param right  the right bound of the search range
+     * @return the index of the target if found, otherwise -1
+     */
+    public static int binarySearch(int[] arr, int target, int left, int right) {
+        // Base case: If the search space is empty, return -1 (not found)
+        if (left > right) {
+            System.out.println("Target not found in the array.");
+            return -1;
+        }
+
+        // Calculate the middle index
+        int mid = left + (right - left) / 2;
+
+        // Log the current search range
+        System.out.println("Left: " + left + ", Right: " + right + ", Mid: " + mid + ", Value at Mid: " + arr[mid]);
+
+        // Check if the target is at the middle
+        if (arr[mid] == target) {
+            System.out.println("Target found at index: " + mid);
+            return mid;
+        }
+
+        // If the target is greater, search in the right half
+        if (arr[mid] < target) {
+            System.out.println("Target is greater than value at Mid. Moving to the right half.");
+            return binarySearch(arr, target, mid + 1, right);
+        }
+
+        // If the target is smaller, search in the left half
+        System.out.println("Target is smaller than value at Mid. Moving to the left half.");
+        return binarySearch(arr, target, left, mid - 1);
+    }
 }
