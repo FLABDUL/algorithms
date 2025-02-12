@@ -92,4 +92,30 @@ public class MergeSort {
         // Log the state of the array after merging
         System.out.println("After merging: " + Arrays.toString(Arrays.copyOfRange(array, left, right + 1)));
     }
+    /**
+     * Merge Sort Algorithm
+     *
+     * Pros:
+     * - Stable sorting algorithm (maintains relative order of equal elements)
+     * - Guarantees O(n log n) time complexity in all cases
+     * - Efficient for sorting linked lists (as merging does not require extra space in linked lists)
+     *
+     * Cons:
+     * - Requires additional O(n) space due to temporary arrays
+     * - Not ideal for small datasets due to overhead
+     * - Performance suffers compared to QuickSort in most practical cases
+     *
+     * Uses:
+     * - Sorting linked lists (since it does not require random access)
+     * - External sorting (when data is too large to fit in memory)
+     * - Suitable for parallel sorting due to its divide-and-conquer nature
+     *
+     * Time Complexity:
+     * - Best Case: O(n log n) N for merging linear + logN for splitting array
+     * - Average Case: O(n log n)
+     * - Worst Case: O(n log n)
+     *
+     * Space Complexity:
+     * - O(n) due to temporary arrays used during merging
+     */
 }
